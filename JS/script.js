@@ -3,9 +3,10 @@
  * on déclare un chiffre imgStart entre 1 et 100
  * on déclare un tableau vide où sera stocker les urls des images
  */
-let dimension = 150;
+const dimension = 150;
 let imgStart = Math.floor(Math.random() * 100 + 1);
 let images = [];
+const conteneurJeu = document.querySelector("#game-board");
 
 /**
  * On fait une boucle qui va créer 8 url d'images via des lien picsum.photos
@@ -20,7 +21,7 @@ for (let i = 0; i < 8; i++) {
 /**
  * On créer un tableau cards où l'on va stocker les urls d'images en dupliquant pour avoir les photos en doubles pour notre memory
  */
-let cards = [...images, ...images];
+const cards = [...images, ...images];
 
 /**
  * Fonction qui va venir mélanger notre tableau d'élément avec la méthode Fisher Yates
@@ -42,7 +43,7 @@ function shuffles(array) {
  * @returns un nouvelle élément avec sa classe si il y'en à une en paramètre
  */
 function creerElement(balise, classes) {
-  const element = document.createAttribute(balise);
+  const element = document.createElement(balise);
   if (classes) {
     element.className = classes;
   }
@@ -58,7 +59,13 @@ function initGame() {
   /**
    * Créer un div avec la classe card pour chaque éléments du tableau cards
    */
-  cards.forEach(creerElement("div", "card"));
+  cards.forEach((element) => {
+    const elementCard = creerElement("div", "card");
+    elementCard.dataset.image = element;
+    elementCard.setAttribute("role", "button");
+    elementCard.setAttribute("tabindex", "0");
+    conteneurJeu.appendChild(elementCard);
+  });
 }
 
 initGame();
