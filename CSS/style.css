@@ -77,6 +77,10 @@ h1 {
   transform: scale(1.04);
 }
 
+.card:has(img)::before {
+  content: none;
+}
+
 .card img {
   width: 100%;
   height: 100%;
