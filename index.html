@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,7 +7,19 @@
     <title>Memory</title>
   </head>
   <body>
-    <div id="game-board"></div>
+    <main class="container">
+      <h1>Memory</h1>
+
+      <div class="stats">
+        <p id="timer">Temps : 00:00</p>
+        <p id="moves">Coups : 0</p>
+        <button id="restart-btn" type="button">Rejouer</button>
+      </div>
+
+      <div id="game-board"></div>
+
+      <h2 id="result"></h2>
+    </main>
     <script src="JS/script.js"></script>
   </body>
 </html>
